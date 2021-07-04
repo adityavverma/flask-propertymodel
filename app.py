@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 
 def api():
-    #Receive input from the user
+    #recieve input from user
     a=request.get_json()
     #loading sklearn pretrained model
     delhi = joblib.load("delhi.pkl")
@@ -16,7 +16,7 @@ def api():
     chennai = joblib.load("chennai.pkl")
     kolkata = joblib.load("kolkata.pkl")
     hyderabad = joblib.load("hyderabad.pkl")
-    #variable for storing user input
+    #variable used fro storing the users data
     auth=a['Auth']
     city=a['City']
     area=a['area']
@@ -52,7 +52,7 @@ def api():
         
         result={"price":prediction}
     else:
-        result={"price":"Wrong Auth Key"}    
+        result={"price":"Wrong Authentication Key"}    
     #return price in json format    
     return jsonify(result)
     
